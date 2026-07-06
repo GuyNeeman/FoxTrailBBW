@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 
-import Home from "./pages/Home";
 import Posten1 from "./posten/Posten1";
 import Posten2 from "./posten/Posten2";
 import Posten3 from "./posten/Posten3";
@@ -16,9 +15,6 @@ function App() {
             </Link>
 
             <div className="navbar-nav">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
               <Link className="nav-link" to="/posten1">
                 Posten 1
               </Link>
@@ -34,7 +30,6 @@ function App() {
 
         <div className="container mt-4">
           <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="/posten1" element={<Posten1 />} />
             <Route path="/posten2" element={<Posten2 />} />
             <Route path="/posten3" element={<Posten3 />} />
