@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import './App.css'
+import './mvp.css'
+import Posten2 from './posten/Posten2.jsx'
 
 function App() {
 
 
   return (
     <>
-    
+      <Posten2 />
     </>
   )
 }
