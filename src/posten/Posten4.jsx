@@ -3,8 +3,7 @@ import { useState } from "react";
 const CORRECT_ANSWER = 4;
 
 // Bild hier einfügen (URL oder importiertes Bild):
-const BILD = "https://media2.homegate.ch/listings/v2/mib/4002342433/image/41bf62244918dd5811d6dfcc87daf45e.jpg"; // z.B. "/bilder/ubs-winterthur.jpg" oder import bild from "./ubs.jpg"
-
+const BILD = "src/assets/ubs.png"
 export default function FoxtrailPosten4() {
     const [input, setInput] = useState("");
     const [attempts, setAttempts] = useState(0);
@@ -24,7 +23,7 @@ export default function FoxtrailPosten4() {
     }
 
     function goNext() {
-        window.location.href = "FoxTrailBBW/posten5"; // Link anpassen
+        window.location.href = "#/posten5"; // Link anpassen
     }
 
     if (solved) {
