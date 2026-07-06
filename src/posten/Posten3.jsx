@@ -8,6 +8,7 @@ export default function Posten3() {
     const pruefen = () => {
         if (antwort.trim().toLowerCase() === "zitrone") {
             setMeldung("✅ Richtig!");
+            navigate("/posten4");
         } else {
             setMeldung("❌ Falsch, versuche es erneut.");
         }
