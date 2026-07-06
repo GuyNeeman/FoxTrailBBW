@@ -10,12 +10,13 @@ export default function Posten2() {
   const navigate = useNavigate();
 
   const pruefen = () => {
-    const parsed = Number.parseFloat(antwort.replace(",", "."));
+    const normalized = antwort.toLowerCase().replace("chf", "").replace(",", ".").trim();
+    const parsed = Number.parseFloat(normalized);
     const istRichtig = Number.isFinite(parsed) && Math.abs(parsed - 12.3) < 0.0001;
 
     if (istRichtig) {
       setFeedback("correct");
-      navigate("/posten3");
+      setTimeout(() => navigate("/posten3"), 2000);
       return;
     }
     setFeedback("wrong");

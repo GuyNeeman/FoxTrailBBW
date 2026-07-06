@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostenCard from "./PostenCard";
 import { styles as s } from "./postenStyles";
+import ubsImage from "../assets/ubs.png";
 
 const CORRECT_ANSWER = 4;
-const BILD =
-  "https://media2.homegate.ch/listings/v2/mib/4002342433/image/41bf62244918dd5811d6dfcc87daf45e.jpg";
 
 export default function Posten4() {
   const [input, setInput] = useState("");
@@ -29,7 +28,7 @@ export default function Posten4() {
   };
 
   return (
-    <PostenCard label="Posten 4" title="🏦 UBS Winterthur" image={BILD} imageAlt="UBS Winterthur">
+    <PostenCard label="Posten 4" title="🏦 UBS Winterthur" image={ubsImage} imageAlt="UBS Winterthur">
       <p style={s.text}>
         Nach dem langen Morgen merkt Guy, dass er kein Bargeld mehr hat. Er geht
         zur UBS-Filiale an der Stadthausstrasse.
