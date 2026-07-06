@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostenCard from "./PostenCard";
-import { styles as s } from "./postenStyles";
 import ubsImage from "../assets/ubs.png";
 
 const CORRECT_ANSWER = 4;
@@ -10,9 +9,12 @@ export default function Posten4() {
   const [input, setInput] = useState("");
   const [attempts, setAttempts] = useState(0);
   const [feedback, setFeedback] = useState(null);
+  const [solved, setSolved] = useState(false);
   const navigate = useNavigate();
 
   const pruefen = () => {
+    if (solved) return;
+
     const val = parseInt(input, 10);
     if (isNaN(val)) {
       setFeedback("empty");
@@ -20,7 +22,8 @@ export default function Posten4() {
     }
     if (val === CORRECT_ANSWER) {
       setFeedback("correct");
-      navigate("/posten5");
+      setSolved(true);
+      setTimeout(() => navigate("/posten5"), 2000);
       return;
     }
     setAttempts((a) => a + 1);
@@ -28,37 +31,36 @@ export default function Posten4() {
   };
 
   return (
-    <PostenCard label="Posten 4" title="🏦 UBS Winterthur" image={ubsImage} imageAlt="UBS Winterthur">
-      <p style={s.text}>
+    <PostenCard step={4} label="Posten 4" title="🏦 UBS Winterthur" image={ubsImage} imageAlt="UBS Winterthur">
+      <p className="posten-text">
         Nach dem langen Morgen merkt Guy, dass er kein Bargeld mehr hat. Er geht
         zur UBS-Filiale an der Stadthausstrasse.
       </p>
 
-      <hr style={s.hr} />
+      <p className="posten-question">Wie viele Bancomaten stehen Guy bei der UBS zur Verfügung?</p>
 
-      <p style={s.question}>Wie viele Bancomaten stehen Guy bei der UBS zur Verfügung?</p>
-
-      <div style={s.row}>
+      <div className="posten-form">
         <input
+          className="posten-input"
           type="number"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && pruefen()}
           placeholder="Anzahl eingeben"
-          style={s.input}
+          disabled={solved}
         />
-        <button style={s.btn} onClick={pruefen}>
+        <button className="posten-button" onClick={pruefen} disabled={solved}>
           Prüfen
         </button>
       </div>
 
-      {feedback === "empty" && <p style={s.wrong}>Bitte eine Zahl eingeben.</p>}
-      {feedback === "low" && <p style={s.wrong}>Zu wenig – es sind mehr.</p>}
-      {feedback === "high" && <p style={s.wrong}>Zu viele – es sind weniger.</p>}
-      {feedback === "correct" && <p style={s.right}>✓ Richtig!</p>}
+      {feedback === "empty" && <p className="posten-feedback is-wrong">Bitte eine Zahl eingeben.</p>}
+      {feedback === "low" && <p className="posten-feedback is-wrong">Zu wenig – es sind mehr.</p>}
+      {feedback === "high" && <p className="posten-feedback is-wrong">Zu viele – es sind weniger.</p>}
+      {feedback === "correct" && <p className="posten-feedback is-correct">✓ Richtig! Weiter geht's …</p>}
 
-      {attempts >= 2 && (
-        <p style={s.hint}>
+      {attempts >= 2 && !solved && (
+        <p className="posten-hint">
           💡 Tipp: Schau auf der UBS-Website beim Standort nach – alle Gerätetypen sind
           dort aufgelistet.
         </p>
