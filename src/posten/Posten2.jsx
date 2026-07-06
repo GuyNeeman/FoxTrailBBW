@@ -1,53 +1,53 @@
-import { useState } from 'react'
-import posten2Image from '../assets/posten2.webp'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PostenCard from "./PostenCard";
+import { styles as s } from "./postenStyles";
+import posten2Image from "../assets/posten2.webp";
 
 export default function Posten2() {
-  const [antwort, setAntwort] = useState('')
-  const [feedback, setFeedback] = useState('')
+  const [antwort, setAntwort] = useState("");
+  const [feedback, setFeedback] = useState(null);
+  const navigate = useNavigate();
 
-  const pruefeAntwort = () => {
-    const parsed = Number.parseFloat(antwort.replace(',', '.'))
-    const istRichtig = Number.isFinite(parsed) && Math.abs(parsed - 12.3) < 0.0001
+  const pruefen = () => {
+    const parsed = Number.parseFloat(antwort.replace(",", "."));
+    const istRichtig = Number.isFinite(parsed) && Math.abs(parsed - 12.3) < 0.0001;
 
     if (istRichtig) {
-      setFeedback('Richtig! Die Loesung ist 12.3 CHF.')
-      return
+      setFeedback("correct");
+      navigate("/posten3");
+      return;
     }
-
-    setFeedback('Falsch. Versuche es noch einmal.')
-  }
+    setFeedback("wrong");
+  };
 
   return (
-    <div>
-      <h2 style= {{color: 'black'}}>Posten 2</h2>
-
-      <img
-        src={posten2Image}
-        alt="Posten 2"
-        style={{ maxWidth: '320px', width: '100%', height: 'auto' }}
-      />
-
-      <p>
+    <PostenCard label="Posten 2" title="🥤 SPAR-Snack" image={posten2Image} imageAlt="Posten 2">
+      <p style={s.text}>
         Lauf jetzt zum SPAR. Beim SPAR sollst du den Preis von einem normalen Red
         Bull, einem Schoggigipfeli und einer VELO Snus Dose Icy Berry zusammenrechnen.
       </p>
 
-      <div style={{ marginBottom: '12px' }}>
-        <label htmlFor="antwort">Deine Antwort in CHF:</label>
+      <hr style={s.hr} />
+
+      <p style={s.question}>Wie viel kostet das zusammen in CHF?</p>
+
+      <div style={s.row}>
         <input
-          id="antwort"
           type="text"
           value={antwort}
-          onChange={(event) => setAntwort(event.target.value)}
+          onChange={(e) => setAntwort(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && pruefen()}
           placeholder="z.B. 10.2"
+          style={s.input}
         />
+        <button style={s.btn} onClick={pruefen}>
+          Prüfen
+        </button>
       </div>
 
-      <button type="button" onClick={pruefeAntwort}>
-        Überpruefen
-      </button>
-
-      {feedback && <p style={{ marginTop: '12px' }}>{feedback}</p>}
-    </div>
-  )
+      {feedback === "wrong" && <p style={s.wrong}>Falsch. Versuche es noch einmal.</p>}
+      {feedback === "correct" && <p style={s.right}>✓ Richtig! Die Lösung ist 12.3 CHF.</p>}
+    </PostenCard>
+  );
 }
