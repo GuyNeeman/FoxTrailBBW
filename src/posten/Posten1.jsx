@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import posten1 from "../assets/posten1.webp"
 
 export default function Posten1() {
     const [stufen, setStufen] = useState("");
@@ -28,6 +29,19 @@ export default function Posten1() {
         >
             <h1 style={{ color: "black" }}>Zeit für das Frühstück 🍽️</h1>
 
+            {/* Bild einfügen */}
+            <img
+                src={posten1}
+                alt="Posten 1"
+                style={{
+                    width: "100%",
+                    maxHeight: "300px",
+                    objectFit: "cover",
+                    borderRadius: "10px",
+                    marginBottom: "20px",
+                }}
+            />
+
             <p>
                 Guy ist ein sehr exotischer Mensch und möchte einen banger Döner
                 essen.
@@ -40,7 +54,7 @@ export default function Posten1() {
 
             <label style={{ display: "block", marginTop: "20px" }}>
                 <strong>
-                    Wie viele Stufen hat die Treppe im Laden (mit der Etage)?
+                    Wie viele Stufen hat die Treppe im Laden (mit der oberen Etage)?
                 </strong>
 
                 <input
