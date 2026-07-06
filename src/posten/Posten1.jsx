@@ -26,7 +26,7 @@ export default function Posten1() {
                 fontFamily: "Arial, sans-serif",
             }}
         >
-            <h1>Zeit für das Frühstück 🍽️</h1>
+            <h1 style={{ color: "black" }}>Zeit für das Frühstück 🍽️</h1>
 
             <p>
                 Guy ist ein sehr exotischer Mensch und möchte einen banger Döner
