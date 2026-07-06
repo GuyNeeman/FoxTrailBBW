@@ -1,4 +1,5 @@
 import { useState } from "react";
+import manor from "../assets/manor.jpg";
 
 export default function Posten3() {
     const [antwort, setAntwort] = useState("");
@@ -14,11 +15,17 @@ export default function Posten3() {
 
     return (
         <div>
+            <img
+                src={manor}
+                alt="Posten 3"
+                style={{ maxWidth: '320px', width: '100%', height: 'auto' }}
+            />
             <p>
                 Gehe zum roten Laden, welcher alles verkauft. Gehe zur
                 Parfümabteilung. Nach was riecht das blaue Parfüm der
                 Fussballlegende Ronaldo?
             </p>
+
 
             <input
                 type="text"
