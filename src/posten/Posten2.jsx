@@ -14,7 +14,7 @@ export default function Posten2() {
 
     const normalized = antwort.toLowerCase().replace("chf", "").replace(",", ".").trim();
     const parsed = Number.parseFloat(normalized);
-    const istRichtig = Number.isFinite(parsed) && Math.abs(parsed - 12.3) < 0.0001;
+    const istRichtig = Number.isFinite(parsed) && Math.abs(parsed - 15.1) < 0.0001;
 
     if (istRichtig) {
       setFeedback("correct");
@@ -28,7 +28,7 @@ export default function Posten2() {
   return (
     <PostenCard step={2} label="Posten 2" title="🥤 SPAR-Snack" image={posten2Image} imageAlt="Posten 2">
       <p className="posten-text">
-        Lauf jetzt zum SPAR. Beim SPAR sollst du den Preis von einem normalen Red
+        Guy möchte noch mehr Geld ausgeben. Lauf jetzt zum SPAR. Beim SPAR sollst du den Preis von einem normalen Red
         Bull, einem Schoggigipfeli und einer VELO Snus Dose Icy Berry zusammenrechnen.
       </p>
 
@@ -41,7 +41,7 @@ export default function Posten2() {
           value={antwort}
           onChange={(e) => setAntwort(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && pruefen()}
-          placeholder="z.B. 10.2"
+          placeholder="z.B. 67.67"
           disabled={solved}
         />
         <button className="posten-button" onClick={pruefen} disabled={solved}>
@@ -50,7 +50,7 @@ export default function Posten2() {
       </div>
 
       {feedback === "wrong" && <p className="posten-feedback is-wrong">Falsch. Versuche es noch einmal.</p>}
-      {feedback === "correct" && <p className="posten-feedback is-correct">✓ Richtig! Die Lösung ist 12.3 CHF.</p>}
+      {feedback === "correct" && <p className="posten-feedback is-correct">✓ Richtig! Die Lösung ist 15.1 CHF.</p>}
     </PostenCard>
   );
 }
