@@ -8,13 +8,15 @@ import Posten4 from "./posten/Posten4";
 import Posten5 from "./posten/Posten5";
 import Posten6 from "./posten/Posten6";
 import PostenEnde from "./posten/PostenEnde";
+import PostenStart from "./posten/PostenStart";
 
 function App() {
   return (
     <HashRouter>
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Posten1 />} />
+          <Route path="/" element={<PostenStart />} />
+          <Route path="/postenStart" element={<PostenStart />} />
           <Route path="/posten1" element={<Posten1 />} />
           <Route path="/posten2" element={<Posten2 />} />
           <Route path="/posten3" element={<Posten3 />} />
@@ -22,10 +24,6 @@ function App() {
           <Route path="/posten5" element={<Posten5 />} />
           <Route path="/posten6" element={<Posten6 />} />
           <Route path="/postenEnde" element={<PostenEnde />} />
-
-        </Routes>
-        <Routes>
-
         </Routes>
       </div>
     </HashRouter>

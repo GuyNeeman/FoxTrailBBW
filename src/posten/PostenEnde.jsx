@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostenCard from "./PostenCard";
-import posten6Image from "../assets/posten7.jpg";
 
-export default function Posten6() {
-  const [stufen, setStufen] = useState("");
-  const [feedback, setFeedback] = useState(null);
+
+export default function PostenEnde() {
   const [solved, setSolved] = useState(false);
   const navigate = useNavigate();
 
@@ -13,7 +11,7 @@ export default function Posten6() {
   function pruefen() {
     if (solved) return;
     setSolved(true);
-    setTimeout(() => navigate("/posten1"), 2000);
+    setTimeout(() => navigate("/postenStart"), 2000);
   }
   return (
     <PostenCard step={6} label="Posten Ende" title="Du hast es geschafft!">
