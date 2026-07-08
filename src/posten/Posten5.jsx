@@ -12,7 +12,7 @@ export default function Posten5() {
   const pruefen = () => {
     if (solved) return;
 
-    if (Number(stufen) === 67) {
+    if (Number(stufen) === 14) {
       setFeedback("correct");
       setSolved(true);
       setTimeout(() => navigate("/posten6"), 2000);
@@ -26,7 +26,7 @@ export default function Posten5() {
       <p className="posten-text">Guy will sich Schuhe kaufen.</p>
       <p className="posten-text">Er findet die Marke New Balance ganz f-f-f-fresh.</p>
 
-      <p className="posten-question">Wie viele Schuhe der Marke New Balance werden ausgestellt?</p>
+      <p className="posten-question">Wie viele Schuhe der Marke New Balance werden im Schaufenster ausgestellt?</p>
 
       <div className="posten-form">
         <input
